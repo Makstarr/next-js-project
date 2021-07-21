@@ -1,3 +1,9 @@
+Проект с курса <a href="https://www.udemy.com/course/react-nextjs/"> Udemy </a>
+
+
+
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
