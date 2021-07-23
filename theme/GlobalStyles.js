@@ -1,15 +1,16 @@
 import { createGlobalStyle } from "styled-components";
 
-export const GlobalStyle = createGlobalStyle`
+const GlobalStyle = createGlobalStyle`
 :root {
 	--black: #3B434E; 
 	--white: #ffffff;
-	--primary: #2c2525;
-	--primary-hover: #000000;
+	--primary: #007888;
+	--primary-hover: #004d57;
 	--red: #353535; 
 	--green: #1DC47E;
 	--green-light: #C8F8E4;
 	--gray-light: #ededed;
+	--gray-dark: #787d85;
 	--font-family: "Noto Sans KR", sans-serif;
 	--fontMed: 1.2rem;
 	--fontSmall: 1rem;
@@ -37,3 +38,5 @@ a {
 }
 
 `;
+
+export default GlobalStyle;

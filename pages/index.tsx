@@ -6,8 +6,12 @@ import Paragraph from '../components/Paragraph/Paragraph';
 import Rating from '../components/Rating/Rating';
 import Tag from '../components/Tag/Tag';
 import Title from '../components/Title/Title';
+import { MenuItem } from '../interfaces/menu.interface';
 import { withLayout } from '../layout/Layout';
-const Home = (): JSX.Element => {
+const Home = ({
+	menu,
+	firstCategory
+}: HomeProps): JSX.Element => {
 	const [counter, setCounter] = useState<number>(0);
 	const [ratng, setRating] = useState<number>(4);
 
@@ -17,6 +21,7 @@ const Home = (): JSX.Element => {
 			console.log("unmaunted");
 		};
 	}, [counter]);
+
 	return (
 		<div>
 			<Title tag="h1">{counter}</Title>
@@ -48,8 +53,9 @@ export default withLayout(Home);
 
 export const getStaticProps: GetStaticProps = async () => {
 	const firstCategory = 0;
-	const { data: menu } = await axios.post(process.env.NEXT_PUBLIC_DOMAIN + "/api/top-pages/find/");
-
+	const { data: menu } = await axios.post<MenuItem[]>(process.env.NEXT_PUBLIC_DOMAIN + "/api/top-page/find", {
+		firstCategory
+	});
 	return {
 		props: {
 			menu,
@@ -58,3 +64,7 @@ export const getStaticProps: GetStaticProps = async () => {
 	};
 };
 
+type HomeProps = {
+	menu: MenuItem[],
+	firstCategory: number
+};

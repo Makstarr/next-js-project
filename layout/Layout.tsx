@@ -1,3 +1,4 @@
+import { AppContextProvider, IAppContext } from '../context/app.context';
 import { LayoutProps } from './Layout.props';
 import { Content, LayoutWrapper, StyledFooter, StyledHeader, StyledSidebar } from './Layout.styles';
 
@@ -14,11 +15,12 @@ const Layout = ({ children }: LayoutProps): JSX.Element => {
 	);
 };
 
-export const withLayout = <T extends Record<string, unknown>>(Component: React.FC<T>) => {
+export const withLayout = <T extends Record<string, unknown> & IAppContext>(Component: React.FC<T>) => {
 	return function withLayoutComponent(props: T): JSX.Element {
-		return <Layout>
-			<Component {...props} />
-		</Layout>;
+		return <AppContextProvider menu={props.menu} firstCategory={props.firstCategory}>
+			<Layout>
+				<Component {...props} />
+			</Layout></AppContextProvider >;
 
 	};
 };
