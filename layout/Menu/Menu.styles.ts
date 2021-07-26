@@ -48,17 +48,18 @@ export const MenuSecondLevel = styled.div`
   }
 `;
 export const MenuThirdLevelBlock = styled.div<{ open: boolean }>`
-  //display: ${(props) => (props.open ? "block" : "none")};
-  //padding-bottom: 20px;
+  display: ${(props) => (props.open ? "block" : "none")};
+  padding-bottom: 20px;
 `;
-export const MenuThirdLevel = styled.div<{ active: boolean }>`
-  cursor: pointer;
+
+export const MenuThirdLevel = styled.div``;
+
+export const MenuThirdLevelLink = styled.a<{ active: boolean }>`
   color: var(--gray-dark);
   font-size: 14px;
-  a {
-    margin-bottom: 10px;
-    display: block;
-  }
+  margin-bottom: 10px;
+  cursor: pointer;
+  display: block;
   ${(props) =>
     props.active &&
     css`

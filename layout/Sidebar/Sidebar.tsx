@@ -1,11 +1,16 @@
 import Menu from '../Menu/Menu';
 import { SidebarProps } from './Sidebar.props';
-
+import Logo from '../logo.svg';
+import { SidebarWrapper } from './Sidebar.styles';
 
 
 const Sidebar = ({ ...props }: SidebarProps): JSX.Element => {
 	return (
-		<div {...props}><Menu /></div>
+		<SidebarWrapper {...props}>
+			<Logo />
+			<div>поиск</div>
+			<Menu />
+		</SidebarWrapper>
 	);
 };
 
