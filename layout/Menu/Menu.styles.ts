@@ -4,7 +4,7 @@ export const MenuWrapper = styled.nav``;
 export const MenuFirstLevel = styled.div<{ active: boolean }>`
   margin-top: 20px;
   ${(props) =>
-    props.active &&
+    props.firstLevelMenu &&
     css`
       color: var(--primary);
       svg {

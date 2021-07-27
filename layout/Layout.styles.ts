@@ -5,13 +5,16 @@ import Sidebar from "./Sidebar/Sidebar";
 
 export const Content = styled.main`
   grid-area: body;
+  @media (max-width: 756px) {
+    padding: 0 15px;
+  }
 `;
 export const LayoutWrapper = styled.div`
   display: grid;
   grid-template-columns: auto 230px minmax(320px, 1200px) auto;
   grid-template-rows: auto 1fr auto;
   min-height: 100vh;
-  gap: 0 30px;
+  gap: 40px 30px;
   grid-template-areas:
     " . header header ."
     " . sidebar body ."

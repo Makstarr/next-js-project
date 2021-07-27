@@ -23,3 +23,7 @@ export const firstLevelMenu: firstLevelMenuItem[] = [
 
 
 ];
+
+export const priceRu = (price: number): string => {
+	return price.toLocaleString('ru') + ' ₽';
+};
