@@ -6,6 +6,7 @@ import Paragraph from '../components/Paragraph/Paragraph';
 import Rating from '../components/Rating/Rating';
 import Tag from '../components/Tag/Tag';
 import Title from '../components/Title/Title';
+import Input from '../components/Input/Input';
 import { MenuItem } from '../interfaces/menu.interface';
 import { withLayout } from '../layout/Layout';
 const Home = ({
@@ -40,6 +41,7 @@ const Home = ({
 			<Tag color="ghost">Lorem</Tag>
 			<Rating rating={ratng} />
 			<Rating rating={ratng} isEditable setRating={setRating} />
+			<Input />
 		</div>
 	);
 };

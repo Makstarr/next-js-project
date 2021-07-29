@@ -25,6 +25,7 @@ export interface ProductModel {
   price: number;
   oldPrice: number;
   advantages: string;
+  disadvantages?: string;
   createdAt: Date;
   updatedAt: Date;
   __v: number;

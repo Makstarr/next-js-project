@@ -16,6 +16,10 @@ export const HHcount = styled(Card)`
   text-align: center;
 `;
 
+export const HHheader = styled.div`
+  padding: 0 0 20px;
+`;
+
 export const HHsalary = styled(Card)`
   display: grid;
   padding: 20px;

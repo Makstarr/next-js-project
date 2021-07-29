@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 import { TitleProps } from './Title.props';
-import { TitleH1, TitleH2, TitleH3 } from './Title.styles';
+import { TitleH1, TitleH2, TitleH3, TitleH4 } from './Title.styles';
 
 const Title = ({ tag, children }: TitleProps): JSX.Element => {
 	switch (tag) {
@@ -16,6 +16,10 @@ const Title = ({ tag, children }: TitleProps): JSX.Element => {
 			return <TitleH3>
 				{children}
 			</TitleH3>;
+		case 'h4':
+			return <TitleH4>
+				{children}
+			</TitleH4>;
 		default:
 			return <></>;
 	}

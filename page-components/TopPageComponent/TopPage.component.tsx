@@ -3,6 +3,7 @@ import { useReducer } from 'react';
 import Advantages from '../../components/Advantages/Advantages';
 import HHdata from '../../components/HHdata/HHdata';
 import Paragraph from '../../components/Paragraph/Paragraph';
+import Product from '../../components/Product/Product';
 import Sort from '../../components/Sort/Sort';
 import { SortEnum } from '../../components/Sort/Sort.props';
 import Tag from '../../components/Tag/Tag';
@@ -25,13 +26,10 @@ const TopPageComponent = ({ page, products, firstCategory }: TopPageComponentPro
 				<Sort sort={sort} setSort={setSort} />
 			</PageTitle>
 			<div>
-				{sortedProducts && products.map(p => (<div key={p._id}>{p.title}</div>))}
+				{sortedProducts && products.map(p => (<Product key={p._id} product={p} />))}
 			</div>
-			<div>
-				<Title tag="h2"> Ваканасии - {page.category} </Title>
-				<Tag color="red" size="l">hh.ru</Tag>
-			</div>
-			{firstCategory === TopLevelCategory.Courses && page.hh && < HHdata {...page.hh} />}
+
+			{firstCategory === TopLevelCategory.Courses && page.hh && < HHdata category={page.category} {...page.hh} />}
 			{page.advantages && page.advantages.length > 0 &&
 				<>
 					<Title tag="h2"> Преимущества </Title>

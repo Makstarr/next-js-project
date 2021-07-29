@@ -6,7 +6,7 @@ export const StyledTag = styled.span<TagProps>`
 
   box-sizing: border-box;
   margin-right: 5px;
-  padding: 5px 12px;
+  padding: 5px 10px;
 
   border-radius: 20px;
 
@@ -15,6 +15,7 @@ export const StyledTag = styled.span<TagProps>`
       case "m":
         return css`
           font-size: 12px;
+          line-height: 12px;
         `;
       case "l":
         return css`

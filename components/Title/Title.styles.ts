@@ -21,3 +21,10 @@ export const TitleH3 = styled.h3`
   line-height: 27px;
   margin: 0;
 `;
+export const TitleH4 = styled.h4`
+  font-size: 16px;
+  line-height: 14px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  margin-top: 0;
+`;

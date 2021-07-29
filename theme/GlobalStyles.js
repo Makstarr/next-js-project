@@ -6,9 +6,10 @@ const GlobalStyle = createGlobalStyle`
 	--white: #ffffff;
 	--primary: #007888;
 	--primary-hover: #004d57;
-	--red: #353535; 
+	--red: #FC836D; 
 	--green: #1DC47E;
 	--green-light: #C8F8E4;
+	--gray: #aaaaaa;
 	--gray-light: #ededed;
 	--gray-dark: #787d85;
 	--font-family: "Noto Sans KR", sans-serif;
