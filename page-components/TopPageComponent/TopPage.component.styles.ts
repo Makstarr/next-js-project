@@ -33,4 +33,8 @@ export const PageTitle = styled.div`
   justify-items: start;
   align-items: center;
   gap: 20px;
+  @media screen and (max-width: 940px) {
+    grid-template-columns: auto 1fr;
+  }
+  margin-bottom: 30px;
 `;

@@ -1,4 +1,4 @@
-import { HrWrapper, Actions, AdvantagesWrapper, Disadvantages, Advantages, Descriptions, Features, TitleWrapper, Credit, CreditTitle, Logo, Price, PriceTitle, ProductWrapper, RateTitle, RatingWrapper, Tags, Characteristic, CharacteristicName, CharacteristicValue, CharacteristicDots } from './Product.styles';
+import { HrWrapper, HrWrapper2, Actions, AdvantagesWrapper, Disadvantages, Advantages, Descriptions, Features, TitleWrapper, Credit, CreditTitle, Logo, Price, PriceTitle, ProductWrapper, RateTitle, RatingWrapper, Tags, Characteristic, CharacteristicName, CharacteristicValue, CharacteristicDots } from './Product.styles';
 import { ProductProps } from './Product.props';
 import Title from '../Title/Title';
 import Button from '../Button/Button';
@@ -6,14 +6,14 @@ import Rating from '../Rating/Rating';
 import Devider from '../Devider/Devider';
 import Tag from '../Tag/Tag';
 import { priceRu, declOfNum } from '../../helpers/helpers';
-
+import Image from 'next/image';
 
 
 
 const Product = ({ product }: ProductProps): JSX.Element => {
 	return (
 		<ProductWrapper>
-			<Logo><img src={process.env.NEXT_PUBLIC_DOMAIN + product.image} alt={product.title} /></Logo>
+			<Logo><Image src={process.env.NEXT_PUBLIC_DOMAIN + product.image} alt={product.title} width="70" height="70" /></Logo>
 			<TitleWrapper>
 				<Title tag="h3">{product.title}</Title>
 			</TitleWrapper>
@@ -47,7 +47,7 @@ const Product = ({ product }: ProductProps): JSX.Element => {
 				</Disadvantages>
 				}
 			</AdvantagesWrapper>
-			<HrWrapper><Devider /></HrWrapper>
+			<HrWrapper2><Devider /></HrWrapper2>
 			<Actions>
 				<Button appearence="primary">Узнать подробнее</Button>
 				<Button appearence="ghost" arrow={"right"}>Читать отзывы</Button>
