@@ -1,7 +1,8 @@
 import { InputProps } from "./Input.props";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const StyledInput = styled.input<InputProps>`
+  width: 100%;
   padding: 7px 14px;
   color: var(--black);
   border: none;
@@ -15,4 +16,21 @@ export const StyledInput = styled.input<InputProps>`
   &::placeholder {
     color: var(--gray);
   }
+  ${(props) =>
+    props.error &&
+    css`
+      border: 2px solid var(--red);
+    `}
+`;
+
+export const InputMessage = styled.span`
+  position: absolute;
+  bottom: -15px;
+  left: 5px;
+  font-size: 12px;
+  color: var(--red);
+`;
+export const InputWrapper = styled.div`
+  position: relative;
+  padding-bottom: 5px;
 `;

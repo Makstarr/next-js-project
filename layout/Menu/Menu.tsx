@@ -14,6 +14,9 @@ const Menu = (): JSX.Element => {
 			if (m._id.secondCategory === secondCategory) {
 				m.isOpened = !m.isOpened;
 			}
+			else {
+				m.isOpened = false;
+			}
 			return m;
 		}));
 	};

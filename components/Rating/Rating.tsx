@@ -1,17 +1,16 @@
-import { useEffect, useState, keyboardEvent } from 'react';
+import { useEffect, useState, KeyboardEvent, ForwardedRef, forwardRef } from 'react';
 import { RatingProps } from './Rating.props';
-import { StarIconWrapper } from './Rating.styles';
+import { RatingMessage, StarIconWrapper, RatingWrapper } from './Rating.styles';
 import Star from './star.svg';
 
-const Rating = ({ rating, isEditable = false, setRating, ...props }: RatingProps): JSX.Element => {
+const Rating = forwardRef(({ rating, isEditable = false, setRating, error, ...props }: RatingProps, ref: ForwardedRef<HTMLSpanElement>): JSX.Element => {
 	const [ratingArray, setRatingArray] = useState<JSX.Element[]>(new Array(5).fill(<></>));
 
 	useEffect(() => {
 		constructRating(rating);
 	}, [rating]);
 
-	const handleSpace = (i: number, e: keyboardEvent<SVGTSpanElement>) => {
-
+	const handleSpace = (i: number, e: KeyboardEvent<SVGTSpanElement>) => {
 		if (e.code != "Space" || !setRating) {
 			return;
 		}
@@ -36,10 +35,11 @@ const Rating = ({ rating, isEditable = false, setRating, ...props }: RatingProps
 					onMouseEnter={() => changeDisplay(i + 1)}
 					onMouseLeave={() => changeDisplay(rating)}
 					onClick={() => onClick(i + 1)}
-
+					ref={ref}
+					error={error && error.message ? true : false}
 				>
 					<Star
-						onKeyDown={(e: keyboardEvent<SVGTSpanElement>) => isEditable && handleSpace(i + 1, e)}
+						onKeyDown={(e: KeyboardEvent<SVGTSpanElement>) => isEditable && handleSpace(i + 1, e)}
 						tabIndex={isEditable ? 0 : -1} />
 				</StarIconWrapper >
 			);
@@ -47,12 +47,14 @@ const Rating = ({ rating, isEditable = false, setRating, ...props }: RatingProps
 		setRatingArray(updatedArray);
 	};
 
-
 	return (
-		<div {...props}>
-			{ratingArray.map((item: JSX.Element) => item)}
-		</div>
+		<RatingWrapper>
+			<div {...props} >
+				{ratingArray.map((item: JSX.Element) => item)}
+			</div>
+			{error && <RatingMessage>{error.message}</RatingMessage>}
+		</RatingWrapper>
 	);
-};
+});
 
 export default Rating;

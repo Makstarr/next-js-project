@@ -1,5 +1,5 @@
 
-import { useReducer } from 'react';
+import { useEffect, useReducer } from 'react';
 import Advantages from '../../components/Advantages/Advantages';
 import HHdata from '../../components/HHdata/HHdata';
 import Paragraph from '../../components/Paragraph/Paragraph';
@@ -18,6 +18,11 @@ const TopPageComponent = ({ page, products, firstCategory }: TopPageComponentPro
 	const setSort = (sort: SortEnum) => {
 		dispatchSort({ type: sort });
 	};
+
+	useEffect(() => {
+		dispatchSort({ type: 'reset', initialState: products });
+	}, [products]);
+
 	return (
 		<PageWrapper>
 			<PageTitle>

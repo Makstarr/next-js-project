@@ -1,12 +1,16 @@
-import { StyledTextarea } from './Textarea.styles';
+import { StyledTextarea, TextareaWrapper, TextareaMessage } from './Textarea.styles';
 import { TextareaProps } from './Textarea.props';
+import { ForwardedRef, forwardRef } from 'react';
 
 
 
-const Textarea = ({ ...props }: TextareaProps): JSX.Element => {
+const Textarea = forwardRef(({ error, ...props }: TextareaProps, ref: ForwardedRef<HTMLTextAreaElement>): JSX.Element => {
 	return (
-		<StyledTextarea {...props} />
+		<TextareaWrapper>
+			<StyledTextarea {...props} ref={ref} error={error} />
+			{error && <TextareaMessage>{error.message}</TextareaMessage>}
+		</TextareaWrapper>
 	);
-};
+});
 
 export default Textarea;

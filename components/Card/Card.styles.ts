@@ -1,7 +1,7 @@
 import { CardProps } from "./Card.props";
 import styled from "styled-components";
 
-export const CardWrapper = styled.div<CardProps>`
+export const CardWrapper = styled.div<{ color: "white" | "blue" }>`
   border-radius: 5px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
   background: ${(props) => {

@@ -1,4 +1,5 @@
 import { DetailedHTMLProps, HTMLAttributes } from "react";
+import { FieldError } from "react-hook-form";
 
 export type RatingProps = DetailedHTMLProps<
   HTMLAttributes<HTMLDivElement>,
@@ -7,4 +8,5 @@ export type RatingProps = DetailedHTMLProps<
   isEditable?: boolean;
   rating: number;
   setRating?: (rating: number) => void;
+  error?: FieldError;
 };

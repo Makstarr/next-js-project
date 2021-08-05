@@ -7,6 +7,7 @@ const GlobalStyle = createGlobalStyle`
 	--primary: #007888;
 	--primary-hover: #004d57;
 	--red: #FC836D; 
+	--red-light: #ffd3cb; 
 	--green: #1DC47E;
 	--green-light: #C8F8E4;
 	--gray: #aaaaaa;

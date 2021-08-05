@@ -1,11 +1,23 @@
 import { MyButton } from "./../Button/Button.styles";
 import { StyledTag } from "./../Tag/Tag.styles";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import Card from "../Card/Card";
 
-export const ProductWrapper = styled(Card)`
+export const ReviewsWrapper = styled(Card)<{ opened: boolean }>`
+  max-height: auto;
   padding: 30px;
   margin-bottom: 30px;
+  ${(props) =>
+    !props.opened &&
+    css`
+      overflow: hidden;
+      max-height: 0;
+      padding: 0;
+    `}
+`;
+export const ProductWrapper = styled(Card)`
+  padding: 30px;
+
   display: grid;
   grid-template-columns:
     [start] 70px [logoend] 30px [titlestart] calc(50% - 100px)
@@ -16,7 +28,7 @@ export const ProductWrapper = styled(Card)`
     grid-template-areas:
       "logo . title title title title title"
       "logo . tags tags tags tags tags "
-      "price price price . credit . rating"
+      "price price price . credit . rating "
       "priceTitle priceTitle priceTitle . creditTitle . ratingTitle"
       "hr hr hr hr hr hr hr"
       "descriptions descriptions descriptions descriptions descriptions descriptions descriptions"
@@ -150,6 +162,9 @@ export const RateTitle = styled.div`
   font-weight: 300;
   font-size: 14px;
   line-height: 19px;
+  a {
+    color: var(--primary);
+  }
   @media screen and (max-width: 1320px) {
     grid-area: ratingTitle;
   }
@@ -170,7 +185,7 @@ export const Features = styled.div`
   }
 `;
 export const AdvantagesWrapper = styled.div`
-  grid-column: middle / end; 
+  grid-column: middle / end;
   font-size: 16px;
   line-height: 22px;
   @media screen and (max-width: 1320px) {

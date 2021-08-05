@@ -1,6 +1,16 @@
 import { TextareaProps } from "./Textarea.props";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
+export const TextareaMessage = styled.span`
+  position: absolute;
+  bottom: -18px;
+  left: 5px;
+  font-size: 12px;
+  color: var(--red);
+`;
+export const TextareaWrapper = styled.div`
+  position: relative;
+`;
 export const StyledTextarea = styled.textarea<TextareaProps>`
   padding: 7px 15px;
   color: var(--black);
@@ -15,4 +25,15 @@ export const StyledTextarea = styled.textarea<TextareaProps>`
   &::placeholder {
     color: var(--gray);
   }
+  width: 100%;
+  min-height: 100px;
+  height: 100%;
+  ${(props) =>
+    props.error &&
+    css`
+      &:focus {
+        border: 2px solid var(--red);
+      }
+      border: 2px solid var(--red);
+    `}
 `;
