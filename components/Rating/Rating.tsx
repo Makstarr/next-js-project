@@ -30,8 +30,9 @@ const Rating = forwardRef(({ rating, isEditable = false, setRating, error, ...pr
 		const updatedArray = ratingArray.map((r: JSX.Element, i: number) => {
 			return (
 				<StarIconWrapper
+					key={i}
 					isEditable={isEditable}
-					filled={i < currentRating} key={i}
+					filled={i < currentRating}
 					onMouseEnter={() => changeDisplay(i + 1)}
 					onMouseLeave={() => changeDisplay(rating)}
 					onClick={() => onClick(i + 1)}

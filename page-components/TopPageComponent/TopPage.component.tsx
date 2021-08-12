@@ -8,6 +8,7 @@ import Sort from '../../components/Sort/Sort';
 import { SortEnum } from '../../components/Sort/Sort.props';
 import Tag from '../../components/Tag/Tag';
 import Title from '../../components/Title/Title';
+import { useScrollY } from '../../hooks/useScrollY';
 import { TopLevelCategory } from '../../interfaces/toppage.interface';
 import { sortReduser } from './sort.reduser';
 import { TopPageComponentProps } from './TopPage.component.props';
@@ -18,7 +19,7 @@ const TopPageComponent = ({ page, products, firstCategory }: TopPageComponentPro
 	const setSort = (sort: SortEnum) => {
 		dispatchSort({ type: sort });
 	};
-
+	const y = useScrollY();
 	useEffect(() => {
 		dispatchSort({ type: 'reset', initialState: products });
 	}, [products]);
@@ -31,7 +32,7 @@ const TopPageComponent = ({ page, products, firstCategory }: TopPageComponentPro
 				<Sort sort={sort} setSort={setSort} />
 			</PageTitle>
 			<div>
-				{sortedProducts && products.map(p => (<Product key={p._id} product={p} />))}
+				{sortedProducts && products.map(p => (<Product layout key={p._id} product={p} />))}
 			</div>
 
 			{firstCategory === TopLevelCategory.Courses && page.hh && < HHdata category={page.category} {...page.hh} />}

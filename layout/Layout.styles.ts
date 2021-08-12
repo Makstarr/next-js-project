@@ -20,6 +20,7 @@ export const LayoutWrapper = styled.div`
     " . sidebar body ."
     " footer footer footer footer";
   @media (max-width: 756px) {
+    gap: 10px;
     grid-template-areas:
       "  header "
       "  body "
@@ -29,10 +30,6 @@ export const LayoutWrapper = styled.div`
 `;
 export const StyledHeader = styled(Header)`
   grid-area: header;
-  display: none;
-  @media (max-width: 756px) {
-    display: block;
-  }
 `;
 export const StyledSidebar = styled(Sidebar)`
   grid-area: sidebar;

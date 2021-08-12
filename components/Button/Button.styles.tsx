@@ -1,9 +1,10 @@
+import { motion } from 'framer-motion';
 import styled, { css } from "styled-components";
 import { ButtonProps } from "./Button.props";
 
 
 
-export const MyButton = styled.button<ButtonProps>`
+export const MyButton = styled(motion.button) <ButtonProps>`
 	display: inline-block;
 
 	box-sizing: border - box;
@@ -19,7 +20,7 @@ export const MyButton = styled.button<ButtonProps>`
 
 	font-size: 14px;
   ${(props) =>
-		props.appearence == "ghost" &&
+		props.appearance == "ghost" &&
 		css`
       color: var(--black);
       border: 1px solid var(--gray-light);
@@ -29,7 +30,7 @@ export const MyButton = styled.button<ButtonProps>`
 			}
     `}
   ${(props) =>
-		props.appearence == "primary" &&
+		props.appearance == "primary" &&
 		css`
       color: var(--white);
       background-color: var(--primary);
@@ -40,10 +41,10 @@ export const MyButton = styled.button<ButtonProps>`
 `;
 
 
-export const ButtonIcon = styled.span< { arrow: ButtonProps["arrow"], appearence: ButtonProps["appearence"] } >`
+export const IconButton = styled.span< { arrow: ButtonProps["arrow"], appearance: ButtonProps["appearance"] } >`
    svg path{
-    ${(props) => props.appearence === "primary" && css`fill: var(--white)`}
-		${(props) => props.appearence == "ghost" && css`fill: var(--black)`}
+    ${(props) => props.appearance === "primary" && css`fill: var(--white)`}
+		${(props) => props.appearance == "ghost" && css`fill: var(--black)`}
 		}
 	${(props) =>
 		props.arrow &&

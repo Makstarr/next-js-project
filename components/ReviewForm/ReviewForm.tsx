@@ -50,7 +50,7 @@ const ReviewForm = ({ productId, ...props }: ReviewFormProps): JSX.Element => {
 					error={errors.description} placeholder="Текст отзыва" {...register('description', { required: { value: true, message: 'Заполните заголовок' } })}
 				/>
 				<Submit>
-					<Button appearence="primary">Отправить</Button>
+					<Button appearance="primary">Отправить</Button>
 					<Info>* Перед публикацией отзыв пройдет предварительную модерацию и проверку</Info>
 				</Submit>
 			</ReviewFormWrapper>

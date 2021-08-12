@@ -7,13 +7,14 @@ import Devider from '../Devider/Devider';
 import Tag from '../Tag/Tag';
 import { priceRu, declOfNum } from '../../helpers/helpers';
 import Image from 'next/image';
-import { useRef, useState } from 'react';
+import { ForwardedRef, forwardRef, useRef, useState } from 'react';
 import Review from '../Review/Review';
 import ReviewForm from '../ReviewForm/ReviewForm';
+import { motion } from 'framer-motion';
 
 
 
-const Product = ({ product, ...props }: ProductProps): JSX.Element => {
+const Product = motion(forwardRef(({ product, ...props }: ProductProps, ref: ForwardedRef<HTMLDivElement>): JSX.Element => {
 	const [isReviewOpened, setIsReviewOpened] = useState<boolean>(false);
 	const reviewRef = useRef<HTMLDivElement>(null);
 	const scrollToRewiev = () => {
@@ -23,8 +24,19 @@ const Product = ({ product, ...props }: ProductProps): JSX.Element => {
 			block: 'start'
 		});
 	};
+	const variants = {
+		visible: {
+			opacity: 1,
+			height: 'auto',
+		},
+		hidden: {
+			overflow: 'hidden',
+			height: 0,
+			opacity: 0
+		}
+	};
 	return (
-		<div {...props}>
+		<div {...props} ref={ref} >
 			<ProductWrapper>
 				<Logo><Image src={process.env.NEXT_PUBLIC_DOMAIN + product.image} alt={product.title} width="70" height="70" /></Logo>
 				<TitleWrapper>
@@ -67,16 +79,18 @@ const Product = ({ product, ...props }: ProductProps): JSX.Element => {
 				</AdvantagesWrapper>
 				<HrWrapper2><Devider /></HrWrapper2>
 				<Actions>
-					<Button appearence="primary">Узнать подробнее</Button>
-					<Button appearence="ghost" arrow={isReviewOpened ? 'down' : 'right'} onClick={() => { setIsReviewOpened(!isReviewOpened); }}>Читать отзывы</Button>
+					<Button appearance="primary">Узнать подробнее</Button>
+					<Button appearance="ghost" arrow={isReviewOpened ? 'down' : 'right'} onClick={() => { setIsReviewOpened(!isReviewOpened); }}>Читать отзывы</Button>
 				</Actions>
 			</ProductWrapper>
-			<ReviewsWrapper color="blue" opened={isReviewOpened} ref={reviewRef}>
-				{product.reviews.map(r => <div key={r._id}> <Review review={r} /> <Devider /> </div>)}
-				<ReviewForm productId={product._id} />
-			</ReviewsWrapper>
-		</div>
+			<motion.div variants={variants} animate={isReviewOpened ? 'visible' : 'hidden'} initial={isReviewOpened ? 'visible' : 'hidden'}>
+				<ReviewsWrapper color="blue" ref={reviewRef}>
+					{product.reviews.map(r => <div key={r._id}> <Review review={r} /> <Devider /> </div>)}
+					<ReviewForm productId={product._id} />
+				</ReviewsWrapper>
+			</motion.div>
+		</div >
 	);
-};
+}));
 
 export default Product;

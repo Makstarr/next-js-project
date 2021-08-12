@@ -26,7 +26,7 @@ const Input = ({ ...props }: SearchProps): JSX.Element => {
 		<SearchWrapper {...props}>
 			<StyledInput value={value} placeholder="Поиск..." onChange={(e) => { setValue(e.target.value); }} onKeyDown={handleKeyDown}>
 			</StyledInput>
-			<StyledButton onClick={goToSearch} appearence="primary">
+			<StyledButton onClick={goToSearch} appearance="primary">
 				<SearchIcon />
 			</StyledButton>
 		</SearchWrapper>

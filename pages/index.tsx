@@ -32,9 +32,9 @@ const Home = ({
 			<Paragraph size="m">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio totam ipsa aspernatur aut modi incidunt commodi recusandae consequuntur ratione iusto eligendi tempora nam omnis esse dolore tenetur ipsum, reprehenderit ex!</Paragraph>
 			<Paragraph size="m">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium porro, voluptate, nam beatae dolores cum provident ducimus repudiandae officiis facilis nesciunt repellendus omnis rem quisquam ex ipsum. Voluptate, tenetur consequuntur.</Paragraph>
 			<Paragraph size="l">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis inventore voluptas, temporibus beatae voluptatem quibusdam, vero maxime culpa, ipsam doloremque atque voluptates? Eum, quidem architecto ab in laboriosam porro dolorem.</Paragraph>
-			<Button appearence='ghost' onClick={() => console.log('click')}> Привет </Button>
-			<Button appearence='primary' arrow="right"> Пока </Button>
-			<Button appearence='primary' arrow="down" onClick={() => setCounter(counter + 1)}> Пока </Button>
+			<Button appearance='ghost' onClick={() => console.log('click')}> Привет </Button>
+			<Button appearance='primary' arrow="right"> Пока </Button>
+			<Button appearance='primary' arrow="down" onClick={() => setCounter(counter + 1)}> Пока </Button>
 			<Tag size="l" color="gray" href="#">Lorem</Tag>
 			<Tag size="l" color="green">Lorem</Tag>
 			<Tag size="l" color="primary">{counter}</Tag>

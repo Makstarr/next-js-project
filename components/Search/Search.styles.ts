@@ -8,7 +8,7 @@ export const StyledInput = styled(Input)`
 export const StyledButton = styled(Button)`
   position: absolute;
   right: 3px;
-  top: 5px;
+  top: 2px;
   width: 32px;
   height: 32px;
   padding: 8px;

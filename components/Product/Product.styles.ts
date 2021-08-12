@@ -1,22 +1,16 @@
 import { MyButton } from "./../Button/Button.styles";
 import { StyledTag } from "./../Tag/Tag.styles";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import Card from "../Card/Card";
 
-export const ReviewsWrapper = styled(Card)<{ opened: boolean }>`
+export const ReviewsWrapper = styled(Card)`
   max-height: auto;
   padding: 30px;
-  margin-bottom: 30px;
-  ${(props) =>
-    !props.opened &&
-    css`
-      overflow: hidden;
-      max-height: 0;
-      padding: 0;
-    `}
 `;
+
 export const ProductWrapper = styled(Card)`
   padding: 30px;
+  margin-top: 30px;
 
   display: grid;
   grid-template-columns:

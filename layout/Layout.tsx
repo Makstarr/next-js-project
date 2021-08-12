@@ -1,3 +1,4 @@
+import Up from '../components/Up/Up';
 import { AppContextProvider, IAppContext } from '../context/app.context';
 import { LayoutProps } from './Layout.props';
 import { Content, LayoutWrapper, StyledFooter, StyledHeader, StyledSidebar } from './Layout.styles';
@@ -11,6 +12,7 @@ const Layout = ({ children }: LayoutProps): JSX.Element => {
 				{children}
 			</Content>
 			<StyledFooter />
+			<Up />
 		</LayoutWrapper>
 	);
 };

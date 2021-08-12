@@ -5,10 +5,39 @@ import { MenuFirstLevel, MenuThirdLevelLink, MenuSecondBlock, MenuSecondLevel, M
 import Link from 'next/link';
 import { useRouter } from 'next/dist/client/router';
 import { firstLevelMenu } from '../../helpers/helpers';
+import { motion } from 'framer-motion';
 
 const Menu = (): JSX.Element => {
 	const { menu, setMenu, firstCategory } = useContext(AppContext);
 	const router = useRouter();
+	const variantsChildren = {
+		visible: {
+			opacity: 1,
+			height: 'auto',
+		},
+		hidden: {
+			overflow: 'hidden',
+			height: 0,
+			opacity: 0
+		}
+	};
+	const variants = {
+		visible: {
+			marginBottom: 20,
+
+			transition: {
+				when: 'beforeChildren',
+				staggerChildren: 0.1
+			}
+		},
+		hidden: {
+			overflow: 'hidden',
+
+			marginBottom: 0,
+
+		}
+	};
+
 	const openSecondLevel = (secondCategory: string) => {
 		setMenu && setMenu(menu.map(m => {
 			if (m._id.secondCategory === secondCategory) {
@@ -55,9 +84,9 @@ const Menu = (): JSX.Element => {
 							<MenuSecondLevel>
 								{m._id.secondCategory}
 							</MenuSecondLevel>
-							<MenuThirdLevelBlock open={m.isOpened}>
+							<motion.div layout variants={variants} initial={m.isOpened ? 'visible' : 'hidden'} animate={m.isOpened ? 'visible' : 'hidden'}>
 								{buildThirdLevel(m.pages, firstLevelMenuItem.route)}
-							</MenuThirdLevelBlock>
+							</motion.div>
 						</div>);
 				}
 				)}
@@ -65,10 +94,14 @@ const Menu = (): JSX.Element => {
 	};
 	const buildThirdLevel = (pages: PageItem[], route: string) => {
 		return (
+
 			<MenuThirdLevel>
-				{pages.map(p => <Link href={`/${route}/${p.alias}`} key={p.alias}>
-					<MenuThirdLevelLink active={`/${route}/${p.alias}` === router.asPath}>{p.title}</MenuThirdLevelLink>
-				</Link>)}
+				{pages.map(p => <motion.div key={p.alias} variants={variantsChildren}>
+					<Link href={`/${route}/${p.alias}`}>
+						<MenuThirdLevelLink active={`/${route}/${p.alias}` === router.asPath}>{p.title}</MenuThirdLevelLink>
+					</Link>
+				</motion.div>
+				)}
 			</MenuThirdLevel>);
 	};
 	return (

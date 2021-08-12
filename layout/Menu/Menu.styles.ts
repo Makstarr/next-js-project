@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { motion } from "framer-motion";
 
 export const MenuWrapper = styled.nav``;
 export const MenuFirstLevel = styled.div<{ active: boolean }>`
@@ -46,10 +47,6 @@ export const MenuSecondLevel = styled.div`
       fill: var(--primary);
     }
   }
-`;
-export const MenuThirdLevelBlock = styled.div<{ open: boolean }>`
-  display: ${(props) => (props.open ? "block" : "none")};
-  padding-bottom: 20px;
 `;
 
 export const MenuThirdLevel = styled.div``;

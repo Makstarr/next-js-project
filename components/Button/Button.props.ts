@@ -1,10 +1,13 @@
 import { ButtonHTMLAttributes, DetailedHTMLProps, ReactNode } from "react";
 export interface ButtonProps
-  extends DetailedHTMLProps<
-    ButtonHTMLAttributes<HTMLButtonElement>,
-    HTMLButtonElement
+  extends Omit<
+    DetailedHTMLProps<
+      ButtonHTMLAttributes<HTMLButtonElement>,
+      HTMLButtonElement
+    >,
+    "onAnimationStart" | "onDragStart" | "OnDragEnd" | "OnDrag" | "ref"
   > {
   children: ReactNode;
-  appearence: "primary" | "ghost";
+  appearance: "primary" | "ghost";
   arrow?: "right" | "down";
 }
